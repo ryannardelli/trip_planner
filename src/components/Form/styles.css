@@ -1,0 +1,23 @@
+#form-container button {
+    border-radius: 5px;
+    border: 1px solid #2a8c82;
+    background-color: #2a8c82;
+    color: #fff;
+    font-weight: bolder;
+    transition: 0.3s ease;
+    width: 100%;
+}
+
+#form-container button:hover {
+    background: transparent;
+    color: #363636;
+    border-color: #41bfb3;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #260101 !important;
+}

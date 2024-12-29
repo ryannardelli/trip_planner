@@ -1,9 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ContentMain } from '../../components/ContentMain';
 
 export const Home = () => {
-  return (
-    <div className="container">
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <ContentMain />;
 };
