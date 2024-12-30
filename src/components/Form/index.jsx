@@ -6,6 +6,7 @@ export const Form = () => {
   const [inputValue, setInputValue] = useState('');
   const [isValid, setIsValid] = useState(null);
   const [isEmpty, setIsEmpty] = useState(false);
+  // const { locationData, setLocationData } = useState('');
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -27,7 +28,7 @@ export const Form = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!inputValue) {
@@ -37,7 +38,19 @@ export const Form = () => {
     }
 
     if (isValid) {
-      console.log('Form enviado com sucesso!');
+      console.log(inputValue);
+      try {
+        const response = await fetch(
+          `https://brasilapi.com.br/api/cep/v2/${inputValue}`,
+        );
+        if (!response.ok) {
+          throw new Error('CEP não encontrado');
+        }
+        const data = await response.json();
+        console.log(data);
+      } catch (e) {
+        console.log('Erro ao buscar dados da api: ', e);
+      }
     }
     return;
   };

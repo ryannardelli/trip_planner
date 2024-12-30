@@ -2,7 +2,8 @@ input {
   margin-bottom: 20px;
 }
 
-input.is-invalid, input.is-valid {
+input.is-invalid,
+input.is-valid {
   margin-bottom: 5px;
 }
 
