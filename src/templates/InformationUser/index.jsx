@@ -1,11 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { generatePDF } from '../../utils/gerenatePDF';
 import { useState } from 'react';
 import './styles.css';
 
 export const InformationUser = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const location = useLocation();
+  const data = location.state?.data;
   const handleDownloadClick = () => {
     setIsButtonDisabled(true);
     generatePDF();
@@ -19,22 +21,16 @@ export const InformationUser = () => {
             <div className="card-body">
               <h5 className="card-title text-center">Informações:</h5>
               <p>
-                <strong>CEP:</strong>
+                <strong>CEP:</strong> {data.cep}
               </p>
               <p>
-                <strong>Logradouro:</strong>
+                <strong>Rua:</strong> {data.street}
               </p>
               <p>
-                <strong>Bairro:</strong>
+                <strong>Bairro:</strong> {data.neighborhood}
               </p>
               <p>
-                <strong>Cidade:</strong>
-              </p>
-              <p>
-                <strong>Estado:</strong>
-              </p>
-              <p>
-                <strong>DDD:</strong>
+                <strong>Cidade:</strong> {data.city}
               </p>
             </div>
           </div>
