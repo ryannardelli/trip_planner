@@ -9,7 +9,7 @@ export const InformationUser = () => {
         <div className="col-sm-6 mb-3 mb-sm-0">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title text-center">Informações</h5>
+              <h5 className="card-title text-center">Informações:</h5>
               <p>
                 <strong>CEP:</strong>
               </p>
@@ -32,13 +32,27 @@ export const InformationUser = () => {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card">
+          <div className="card" id="card-temp">
+            <img
+              src="https://www.mataoinforma.com.br/wp-content/uploads/2021/10/Previsao-do-Tempo.jpg"
+              alt="Previsão do tempo"
+              className="img-fluid"
+            />
             <div className="card-body">
-              <h5 className="card-title">Special title treatment</h5>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
+              <div>
+                <p>
+                  <strong>Temperatura</strong>:°C
+                </p>
+                <p>
+                  <strong>Condição:</strong>
+                </p>
+                <p>
+                  <strong>Umidade:</strong>%
+                </p>
+                <p>
+                  <strong>Vento:</strong>km/h
+                </p>
+              </div>
             </div>
           </div>
         </div>
