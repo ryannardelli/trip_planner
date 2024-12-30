@@ -1,12 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Form = () => {
   const [inputValue, setInputValue] = useState('');
   const [isValid, setIsValid] = useState(null);
   const [isEmpty, setIsEmpty] = useState(false);
-  // const { locationData, setLocationData } = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -38,7 +40,7 @@ export const Form = () => {
     }
 
     if (isValid) {
-      console.log(inputValue);
+      setLoading(true);
       try {
         const response = await fetch(
           `https://brasilapi.com.br/api/cep/v2/${inputValue}`,
@@ -48,8 +50,12 @@ export const Form = () => {
         }
         const data = await response.json();
         console.log(data);
+
+        setTimeout(() => {
+          navigate(`/information`, { state: { data } });
+        }, 2000);
       } catch (e) {
-        console.log('Erro ao buscar dados da api: ', e);
+        console.log('Erro ao buscar dados da API: ', e);
       }
     }
     return;
@@ -94,6 +100,14 @@ export const Form = () => {
       <button type="submit" className="btn btn-primary">
         Enviar
       </button>
+
+      {loading && (
+        <div className="d-flex justify-content-center mt-3">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Carregando...</span>
+          </div>
+        </div>
+      )}
     </form>
   );
 };

@@ -10,11 +10,11 @@
 }
 
 .card {
-    max-height: 300px;
+  max-height: 300px;
 }
 
 #card-temp {
-    overflow: auto;
+  overflow: auto;
 }
 
 .return:hover {
