@@ -1,8 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { generatePDF } from '../../utils/gerenatePDF';
+import { useState } from 'react';
 import './styles.css';
 
 export const InformationUser = () => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const handleDownloadClick = () => {
+    setIsButtonDisabled(true);
+    generatePDF();
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -52,6 +60,13 @@ export const InformationUser = () => {
                 <p>
                   <strong>Vento:</strong>km/h
                 </p>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleDownloadClick}
+                  disabled={isButtonDisabled}
+                >
+                  Gerar Relatório
+                </button>
               </div>
             </div>
           </div>
