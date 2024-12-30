@@ -1,17 +1,25 @@
+input {
+  margin-bottom: 20px;
+}
+
+input.is-invalid, input.is-valid {
+  margin-bottom: 5px;
+}
+
 #form-container button {
-    border-radius: 5px;
-    border: 1px solid #2a8c82;
-    background-color: #2a8c82;
-    color: #fff;
-    font-weight: bolder;
-    transition: 0.3s ease;
-    width: 100%;
+  border-radius: 5px;
+  border: 1px solid #2a8c82;
+  background-color: #2a8c82;
+  color: #fff;
+  font-weight: bolder;
+  transition: 0.3s ease;
+  width: 100%;
 }
 
 #form-container button:hover {
-    background: transparent;
-    color: #363636;
-    border-color: #41bfb3;
+  background: transparent;
+  color: #363636;
+  border-color: #41bfb3;
 }
 
 input:focus,
