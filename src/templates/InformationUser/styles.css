@@ -9,12 +9,8 @@
   transition: 0.3s ease;
 }
 
-.card {
-  max-height: 300px;
-}
-
-#card-temp {
-  overflow: auto;
+.card h5 {
+  margin-bottom: 30px;
 }
 
 .return:hover {

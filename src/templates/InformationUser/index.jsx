@@ -37,12 +37,8 @@ export const InformationUser = () => {
         </div>
         <div className="col-sm-6">
           <div className="card" id="card-temp">
-            <img
-              src="https://www.mataoinforma.com.br/wp-content/uploads/2021/10/Previsao-do-Tempo.jpg"
-              alt="Previsão do tempo"
-              className="img-fluid"
-            />
             <div className="card-body">
+              <h5 className="card-title text-center">Resultado:</h5>
               <div>
                 <p>
                   <strong>Temperatura</strong>:°C
