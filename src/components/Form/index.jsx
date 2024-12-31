@@ -73,6 +73,7 @@ export const Form = () => {
         }
       } catch (e) {
         console.log('Erro ao buscar dados da BrasilAPI:', e);
+        navigate('/error');
       }
     }
   };
