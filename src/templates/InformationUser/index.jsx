@@ -1,22 +1,30 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useLocation } from 'react-router-dom';
-import { showModal, closeModal } from '../../utils/handleModal';
 import { useState } from 'react';
 import { ModalInformation } from '../../components/ModalInformation';
+import { ModalDetailsWeather } from '../../components/ModalDetailsWeather';
 import './styles.css';
 
 export const InformationUser = () => {
-  const [showModalState, setShowModalState] = useState(false);
+  // Estados para controlar qual modal será exibido
+  const [showInformationModal, setShowInformationModal] = useState(false);
+  const [showWeatherModal, setShowWeatherModal] = useState(false);
+
   const location = useLocation();
   const data = location.state?.data;
   const dataWeather = location.state?.weatherData;
 
-  const handleShowModal = () => {
-    showModal(setShowModalState);
+  const handleShowInformationModal = () => {
+    setShowInformationModal(true);
+  };
+
+  const handleShowWeatherModal = () => {
+    setShowWeatherModal(true);
   };
 
   const handleCloseModal = () => {
-    closeModal(setShowModalState);
+    setShowInformationModal(false);
+    setShowWeatherModal(false);
   };
 
   return (
@@ -38,12 +46,16 @@ export const InformationUser = () => {
               <p>
                 <strong>Cidade:</strong> {data.city}
               </p>
-              <button className="btn btn-primary" onClick={handleShowModal}>
+              <button
+                className="btn btn-primary"
+                onClick={handleShowInformationModal}
+              >
                 Exibir mais informações
               </button>
             </div>
           </div>
         </div>
+
         <div className="col-sm-6">
           <div className="card" id="card-temp">
             <div className="card-body">
@@ -62,24 +74,36 @@ export const InformationUser = () => {
                 <p>
                   <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
                 </p>
-                <button className="btn btn-primary" onClick={handleShowModal}>
-                  Exibir resultado
+                <button
+                  className="btn btn-primary"
+                  onClick={handleShowWeatherModal}
+                >
+                  Ver Detalhes climáticos
                 </button>
               </div>
             </div>
           </div>
         </div>
+
         <Link to="/" className="return">
           Voltar
         </Link>
       </div>
 
-      {/* Modal Informações */}
+      {/* Modal de Informações */}
       <ModalInformation
-        showModalState={showModalState} // Passando o estado do modal
-        handleCloseModal={handleCloseModal} // Passando a função de fechar o modal
-        data={data} // Passando os dados de endereço
-        dataWeather={dataWeather} // Passando os dados do clima
+        showModalState={showInformationModal}
+        handleCloseModal={handleCloseModal}
+        data={data}
+        dataWeather={dataWeather}
+      />
+
+      {/* Modal de Detalhes Climáticos */}
+      <ModalDetailsWeather
+        showModalState={showWeatherModal}
+        handleCloseModal={handleCloseModal}
+        data={data}
+        dataWeather={dataWeather}
       />
     </div>
   );
