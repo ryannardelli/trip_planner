@@ -83,9 +83,6 @@ ModalDetailsWeather.propTypes = {
   showModalState: P.bool.isRequired, // Espera um booleano para controle da visibilidade do modal
   handleCloseModal: P.func.isRequired, // Espera uma função para fechar o modal
   data: P.shape({
-    cep: P.string.isRequired,
-    street: P.string.isRequired,
-    neighborhood: P.string.isRequired,
     city: P.string.isRequired,
   }).isRequired, // Espera um objeto com informações de endereço
   dataWeather: P.shape({
