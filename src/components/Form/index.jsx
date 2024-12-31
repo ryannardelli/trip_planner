@@ -42,6 +42,7 @@ export const Form = () => {
     if (isValid) {
       setLoading(true);
       try {
+        // Chamada à BrasilAPI
         const response = await fetch(
           `https://brasilapi.com.br/api/cep/v2/${inputValue}`,
         );
@@ -49,16 +50,31 @@ export const Form = () => {
           throw new Error('CEP não encontrado');
         }
         const data = await response.json();
-        console.log(data);
+        console.log('Dados do CEP:', data);
 
-        setTimeout(() => {
-          navigate(`/information`, { state: { data } });
-        }, 2000);
+        // Chamada à WeatherAPI
+        try {
+          const api_key = 'c9316ad413924550b55155233243112';
+          const weatherResponse = await fetch(
+            `https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${data.city}&lang=pt`,
+          );
+          if (!weatherResponse.ok) {
+            throw new Error('Não foi possível obter a previsão do tempo');
+          }
+          const weatherData = await weatherResponse.json();
+          console.log('Dados climáticos:', weatherData);
+
+          // Navegação com dados de ambas as APIs
+          setTimeout(() => {
+            navigate(`/information`, { state: { data, weatherData } });
+          }, 2000);
+        } catch (e) {
+          console.log('Erro ao consultar a WeatherAPI:', e);
+        }
       } catch (e) {
-        console.log('Erro ao buscar dados da API: ', e);
+        console.log('Erro ao buscar dados da BrasilAPI:', e);
       }
     }
-    return;
   };
 
   return (

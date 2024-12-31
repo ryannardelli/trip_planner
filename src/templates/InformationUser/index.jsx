@@ -8,6 +8,8 @@ export const InformationUser = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const location = useLocation();
   const data = location.state?.data;
+
+  const dataWeather = location.state?.weatherData;
   const handleDownloadClick = () => {
     setIsButtonDisabled(true);
     generatePDF();
@@ -41,16 +43,17 @@ export const InformationUser = () => {
               <h5 className="card-title text-center">Resultado:</h5>
               <div>
                 <p>
-                  <strong>Temperatura</strong>:°C
+                  <strong>Temperatura</strong>: {dataWeather.current.temp_c}°C
                 </p>
                 <p>
-                  <strong>Condição:</strong>
+                  <strong>Condição: </strong>
+                  {dataWeather.current.condition.text}
                 </p>
                 <p>
-                  <strong>Umidade:</strong>%
+                  <strong>Umidade:</strong> {dataWeather.current.humidity}%
                 </p>
                 <p>
-                  <strong>Vento:</strong>km/h
+                  <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
                 </p>
                 <button
                   className="btn btn-primary"
