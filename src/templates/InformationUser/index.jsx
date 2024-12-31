@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useLocation } from 'react-router-dom';
 import { showModal, closeModal } from '../../utils/handleModal';
 import { useState } from 'react';
+import { ModalInformation } from '../../components/ModalInformation';
 import './styles.css';
 
 export const InformationUser = () => {
@@ -74,73 +75,12 @@ export const InformationUser = () => {
       </div>
 
       {/* Modal Informações */}
-      <div
-        className={`modal fade ${showModalState ? 'show' : ''}`}
-        tabIndex="-1"
-        style={{ display: showModalState ? 'block' : 'none' }}
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-scrollable">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Informações Detalhadas
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                onClick={handleCloseModal}
-              ></button>
-            </div>
-            <div className="modal-body">
-              <h6>
-                <strong>Informações de Endereço:</strong>
-              </h6>
-              <p>
-                <strong>CEP:</strong> {data.cep}
-              </p>
-              <p>
-                <strong>Rua:</strong> {data.street}
-              </p>
-              <p>
-                <strong>Bairro:</strong> {data.neighborhood}
-              </p>
-              <p>
-                <strong>Cidade:</strong> {data.city}
-              </p>
-
-              <h6>
-                <strong>Informações Climáticas:</strong>
-              </h6>
-              <p>
-                <strong>Temperatura:</strong> {dataWeather.current.temp_c}°C
-              </p>
-              <p>
-                <strong>Condição:</strong> {dataWeather.current.condition.text}
-              </p>
-              <p>
-                <strong>Umidade:</strong> {dataWeather.current.humidity}%
-              </p>
-              <p>
-                <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
-              </p>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-                onClick={handleCloseModal}
-              >
-                Fechar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ModalInformation
+        showModalState={showModalState} // Passando o estado do modal
+        handleCloseModal={handleCloseModal} // Passando a função de fechar o modal
+        data={data} // Passando os dados de endereço
+        dataWeather={dataWeather} // Passando os dados do clima
+      />
     </div>
   );
 };
