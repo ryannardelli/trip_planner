@@ -29,22 +29,9 @@ export const ModalDetailsWeather = ({
             ></button>
           </div>
           <div className="modal-body">
-            <h6>
-              <strong>Informações de Endereço:</strong>
-            </h6>
-            <p>
-              <strong>CEP:</strong> {data.cep}
-            </p>
-            <p>
-              <strong>Rua:</strong> {data.street}
-            </p>
-            <p>
-              <strong>Bairro:</strong> {data.neighborhood}
-            </p>
             <p>
               <strong>Cidade:</strong> {data.city}
             </p>
-
             <h6>
               <strong>Informações Climáticas:</strong>
             </h6>
@@ -59,6 +46,21 @@ export const ModalDetailsWeather = ({
             </p>
             <p>
               <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
+            </p>
+
+            <p>
+              <strong>Previsão para os próximos dias:</strong>{' '}
+              {/* {dataWeather.forecast.forecastday[0].day.avgtemp_c}°C */}
+            </p>
+            <p>
+              <strong>Índice UV:</strong> {dataWeather.current.uv}
+            </p>
+            <p>
+              <strong>Sensação Térmica:</strong>{' '}
+              {dataWeather.current.feelslike_c}°C
+            </p>
+            <p>
+              <strong>Visibilidade:</strong> {dataWeather.current.vis_km} km
             </p>
           </div>
           <div className="modal-footer">
@@ -94,6 +96,18 @@ ModalDetailsWeather.propTypes = {
       }).isRequired,
       humidity: P.number.isRequired,
       wind_kph: P.number.isRequired,
+      vis_km: P.number.isRequired,
+      uv: P.number.isRequired,
+      feelslike_c: P.number.isRequired,
     }).isRequired,
-  }).isRequired, // Espera um objeto com informações climáticas
+    forecast: P.shape({
+      forecastday: P.arrayOf(
+        P.shape({
+          day: P.shape({
+            avgtemp_c: P.number.isRequired, // Temperatura média
+          }).isRequired,
+        }),
+      ).isRequired,
+    }).isRequired,
+  }).isRequired, // Espera um objeto com informações climáticas, incluindo a previsão do tempo
 };
