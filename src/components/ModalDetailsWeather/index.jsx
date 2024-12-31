@@ -3,7 +3,6 @@ import P from 'prop-types';
 export const ModalDetailsWeather = ({
   showModalState,
   handleCloseModal,
-  data,
   dataWeather,
 }) => {
   return (
@@ -29,9 +28,6 @@ export const ModalDetailsWeather = ({
             ></button>
           </div>
           <div className="modal-body">
-            <p>
-              <strong>Cidade:</strong> {data.city}
-            </p>
             <h6>
               <strong>Informações Climáticas:</strong>
             </h6>

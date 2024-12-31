@@ -46,6 +46,9 @@ export const InformationUser = () => {
               <p>
                 <strong>Cidade:</strong> {data.city}
               </p>
+              <p>
+                <strong>Estado:</strong> {data.state}
+              </p>
               <button
                 className="btn btn-primary"
                 onClick={handleShowInformationModal}
@@ -73,6 +76,10 @@ export const InformationUser = () => {
                 </p>
                 <p>
                   <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
+                </p>
+                <p>
+                  <strong>Sensação Térmica:</strong>{' '}
+                  {dataWeather.current.feelslike_c}°C
                 </p>
                 <button
                   className="btn btn-primary"

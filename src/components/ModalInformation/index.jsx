@@ -45,6 +45,10 @@ export const ModalInformation = ({
               <strong>Cidade:</strong> {data.city}
             </p>
 
+            <p>
+              <strong>Estado:</strong> {data.state}
+            </p>
+
             <h6>
               <strong>Informações Climáticas:</strong>
             </h6>
@@ -85,6 +89,7 @@ ModalInformation.propTypes = {
     street: P.string.isRequired,
     neighborhood: P.string.isRequired,
     city: P.string.isRequired,
+    state: P.string.isRequired,
   }).isRequired, // Espera um objeto com informações de endereço
   dataWeather: P.shape({
     current: P.shape({
