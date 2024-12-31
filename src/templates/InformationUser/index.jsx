@@ -1,18 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useLocation } from 'react-router-dom';
-import { generatePDF } from '../../utils/gerenatePDF';
+import { showModal, closeModal } from '../../utils/handleModal';
 import { useState } from 'react';
 import './styles.css';
 
 export const InformationUser = () => {
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [showModalState, setShowModalState] = useState(false);
   const location = useLocation();
   const data = location.state?.data;
-
   const dataWeather = location.state?.weatherData;
-  const handleDownloadClick = () => {
-    setIsButtonDisabled(true);
-    generatePDF();
+
+  const handleShowModal = () => {
+    showModal(setShowModalState);
+  };
+
+  const handleCloseModal = () => {
+    closeModal(setShowModalState);
   };
 
   return (
@@ -34,6 +37,9 @@ export const InformationUser = () => {
               <p>
                 <strong>Cidade:</strong> {data.city}
               </p>
+              <button className="btn btn-primary" onClick={handleShowModal}>
+                Exibir mais informações
+              </button>
             </div>
           </div>
         </div>
@@ -55,21 +61,85 @@ export const InformationUser = () => {
                 <p>
                   <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
                 </p>
-                <button
-                  className="btn btn-primary"
-                  onClick={handleDownloadClick}
-                  disabled={isButtonDisabled}
-                >
-                  Gerar Relatório
+                <button className="btn btn-primary" onClick={handleShowModal}>
+                  Exibir resultado
                 </button>
               </div>
             </div>
           </div>
         </div>
-
         <Link to="/" className="return">
           Voltar
         </Link>
+      </div>
+
+      {/* Modal Informações */}
+      <div
+        className={`modal fade ${showModalState ? 'show' : ''}`}
+        tabIndex="-1"
+        style={{ display: showModalState ? 'block' : 'none' }}
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Informações Detalhadas
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={handleCloseModal}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <h6>
+                <strong>Informações de Endereço:</strong>
+              </h6>
+              <p>
+                <strong>CEP:</strong> {data.cep}
+              </p>
+              <p>
+                <strong>Rua:</strong> {data.street}
+              </p>
+              <p>
+                <strong>Bairro:</strong> {data.neighborhood}
+              </p>
+              <p>
+                <strong>Cidade:</strong> {data.city}
+              </p>
+
+              <h6>
+                <strong>Informações Climáticas:</strong>
+              </h6>
+              <p>
+                <strong>Temperatura:</strong> {dataWeather.current.temp_c}°C
+              </p>
+              <p>
+                <strong>Condição:</strong> {dataWeather.current.condition.text}
+              </p>
+              <p>
+                <strong>Umidade:</strong> {dataWeather.current.humidity}%
+              </p>
+              <p>
+                <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
+              </p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+                onClick={handleCloseModal}
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
