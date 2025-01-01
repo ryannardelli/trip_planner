@@ -6,14 +6,17 @@ import { ModalDetailsWeather } from '../../components/ModalDetailsWeather';
 import './styles.css';
 
 export const InformationUser = () => {
-  // Estados para controlar qual modal será exibido
   const [showInformationModal, setShowInformationModal] = useState(false);
   const [showWeatherModal, setShowWeatherModal] = useState(false);
-  // const forecastData = location.state?.forecastData; // Dados da previsão
 
   const location = useLocation();
   const data = location.state?.data;
   const dataWeather = location.state?.weatherData;
+  const forecastData = location.state?.forecastData;
+
+  console.log(dataWeather);
+
+  console.log('Forecast Data', forecastData);
 
   const handleShowInformationModal = () => {
     setShowInformationModal(true);
@@ -98,7 +101,6 @@ export const InformationUser = () => {
         </Link>
       </div>
 
-      {/* Modal de Informações */}
       <ModalInformation
         showModalState={showInformationModal}
         handleCloseModal={handleCloseModal}
@@ -106,12 +108,12 @@ export const InformationUser = () => {
         dataWeather={dataWeather}
       />
 
-      {/* Modal de Detalhes Climáticos */}
       <ModalDetailsWeather
         showModalState={showWeatherModal}
         handleCloseModal={handleCloseModal}
         data={data}
         dataWeather={dataWeather}
+        forecast={forecastData}
       />
     </div>
   );

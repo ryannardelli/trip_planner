@@ -43,7 +43,6 @@ export const Form = () => {
     if (isValid) {
       setLoading(true);
       try {
-        // Chamada à BrasilAPI
         const response = await fetch(
           `https://brasilapi.com.br/api/cep/v2/${inputValue}`,
         );
@@ -52,7 +51,6 @@ export const Form = () => {
         }
         const data = await response.json();
 
-        // Chamada à WeatherAPI para clima atual
         const weatherResponse = await fetch(
           `https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${data.city}&lang=pt`,
         );
@@ -61,9 +59,8 @@ export const Form = () => {
         }
         const weatherData = await weatherResponse.json();
 
-        // Chamada à WeatherAPI para previsão de 5 dias
         const forecastResponse = await fetch(
-          `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${data.city}&days=5`,
+          `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${data.city}&days=5&lang=pt`,
         );
         if (!forecastResponse.ok) {
           throw new Error(
@@ -71,9 +68,6 @@ export const Form = () => {
           );
         }
         const forecastData = await forecastResponse.json();
-        console.log(forecastData);
-
-        // Navegação com todos os dados
         setTimeout(() => {
           navigate(`/information`, {
             state: { data, weatherData, forecastData },
@@ -117,9 +111,7 @@ export const Form = () => {
       ) : (
         <>
           <div className="valid-feedback py-2">CEP válido</div>
-          <div className="invalid-feedback py-2">
-            CEP inválido. Deve ter 8 dígitos.
-          </div>
+          <div className="invalid-feedback py-2">CEP inválido.</div>
         </>
       )}
       <button type="submit" className="btn btn-primary">

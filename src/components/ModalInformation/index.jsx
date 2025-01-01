@@ -29,9 +29,9 @@ export const ModalInformation = ({
             ></button>
           </div>
           <div className="modal-body">
-            <h6>
+            <h5>
               <strong>Informações de Endereço:</strong>
-            </h6>
+            </h5>
             <p>
               <strong>CEP:</strong> {data.cep}
             </p>
@@ -49,14 +49,19 @@ export const ModalInformation = ({
               <strong>Estado:</strong> {data.state}
             </p>
 
-            <h6>
+            <h5>
               <strong>Informações Climáticas:</strong>
-            </h6>
+            </h5>
             <p>
               <strong>Temperatura:</strong> {dataWeather.current.temp_c}°C
             </p>
             <p>
               <strong>Condição:</strong> {dataWeather.current.condition.text}
+              <img
+                src={`https:${dataWeather.current.condition.icon}`}
+                alt={dataWeather.current.text}
+                style={{ width: '40px', height: '40px' }}
+              />
             </p>
             <p>
               <strong>Umidade:</strong> {dataWeather.current.humidity}%
@@ -94,8 +99,10 @@ ModalInformation.propTypes = {
   dataWeather: P.shape({
     current: P.shape({
       temp_c: P.number.isRequired,
+      text: P.string.isRequired,
       condition: P.shape({
         text: P.string.isRequired,
+        icon: P.string.isRequired,
       }).isRequired,
       humidity: P.number.isRequired,
       wind_kph: P.number.isRequired,

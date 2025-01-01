@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import P from 'prop-types';
-
 export const ModalDetailsWeather = ({
   showModalState,
   handleCloseModal,
   dataWeather,
+  forecast,
 }) => {
   return (
     <div
@@ -28,25 +29,25 @@ export const ModalDetailsWeather = ({
             ></button>
           </div>
           <div className="modal-body">
-            <h6>
+            <h5>
               <strong>Informações Climáticas:</strong>
-            </h6>
+            </h5>
             <p>
               <strong>Temperatura:</strong> {dataWeather.current.temp_c}°C
             </p>
             <p>
               <strong>Condição:</strong> {dataWeather.current.condition.text}
+              <img
+                src={`https:${dataWeather.current.condition.icon}`}
+                alt={dataWeather.current.text}
+                style={{ width: '40px', height: '40px' }}
+              />
             </p>
             <p>
               <strong>Umidade:</strong> {dataWeather.current.humidity}%
             </p>
             <p>
               <strong>Vento:</strong> {dataWeather.current.wind_kph}km/h
-            </p>
-
-            <p>
-              <strong>Previsão para os próximos dias:</strong>{' '}
-              {/* {dataWeather.forecast.forecastday[0].day.avgtemp_c}°C */}
             </p>
             <p>
               <strong>Índice UV:</strong> {dataWeather.current.uv}
@@ -58,6 +59,32 @@ export const ModalDetailsWeather = ({
             <p>
               <strong>Visibilidade:</strong> {dataWeather.current.vis_km} km
             </p>
+            <h5>
+              <strong>Previsão para os próximos dias:</strong>
+            </h5>
+            {forecast ? (
+              forecast.forecast.forecastday.map((day, index) => (
+                <div key={index}>
+                  <p>
+                    <strong>Data:</strong>{' '}
+                    {new Date(day.date).toLocaleDateString('pt-BR')}
+                  </p>
+                  <p>
+                    <strong>Temperatura média:</strong> {day.day.avgtemp_c}°C
+                  </p>
+                  <p>
+                    <strong>Condição:</strong> {day.day.condition.text}
+                    <img
+                      src={`https:${day.day.condition.icon}`}
+                      alt={day.day.condition.text}
+                      style={{ width: '40px', height: '40px' }}
+                    />
+                  </p>
+                </div>
+              ))
+            ) : (
+              <p>Dados de previsão indisponíveis.</p>
+            )}
           </div>
           <div className="modal-footer">
             <button
@@ -76,11 +103,8 @@ export const ModalDetailsWeather = ({
 };
 
 ModalDetailsWeather.propTypes = {
-  showModalState: P.bool.isRequired, // Espera um booleano para controle da visibilidade do modal
-  handleCloseModal: P.func.isRequired, // Espera uma função para fechar o modal
-  data: P.shape({
-    city: P.string.isRequired,
-  }).isRequired, // Espera um objeto com informações de endereço
+  showModalState: P.bool.isRequired,
+  handleCloseModal: P.func.isRequired,
   dataWeather: P.shape({
     current: P.shape({
       temp_c: P.number.isRequired,
@@ -93,14 +117,18 @@ ModalDetailsWeather.propTypes = {
       uv: P.number.isRequired,
       feelslike_c: P.number.isRequired,
     }).isRequired,
-    forecast: P.shape({
-      forecastday: P.arrayOf(
-        P.shape({
-          day: P.shape({
-            avgtemp_c: P.number.isRequired, // Temperatura média
+  }).isRequired,
+  forecast: P.shape({
+    forecastday: P.arrayOf(
+      P.shape({
+        date: P.string.isRequired,
+        day: P.shape({
+          avgtemp_c: P.number.isRequired,
+          condition: P.shape({
+            text: P.string.isRequired,
           }).isRequired,
-        }),
-      ).isRequired,
-    }).isRequired,
-  }).isRequired, // Espera um objeto com informações climáticas, incluindo a previsão do tempo
+        }).isRequired,
+      }),
+    ).isRequired,
+  }).isRequired,
 };
