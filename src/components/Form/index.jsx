@@ -99,7 +99,7 @@ export const Form = () => {
               ? 'is-valid'
               : ''
         }`}
-        placeholder="Digite seu CEP"
+        placeholder="Digite o CEP"
         value={inputValue}
         onChange={handleChange}
         required
