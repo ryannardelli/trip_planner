@@ -8,6 +8,7 @@ export const Form = () => {
   const [isValid, setIsValid] = useState(null);
   const [isEmpty, setIsEmpty] = useState(false);
   const [loading, setLoading] = useState(false);
+  const api_key = 'c9316ad413924550b55155233243112';
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -50,29 +51,36 @@ export const Form = () => {
           throw new Error('CEP não encontrado');
         }
         const data = await response.json();
-        console.log('Dados do CEP:', data);
 
-        // Chamada à WeatherAPI
-        try {
-          const api_key = 'c9316ad413924550b55155233243112';
-          const weatherResponse = await fetch(
-            `https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${data.city}&lang=pt`,
-          );
-          if (!weatherResponse.ok) {
-            throw new Error('Não foi possível obter a previsão do tempo');
-          }
-          const weatherData = await weatherResponse.json();
-          console.log('Dados climáticos:', weatherData);
-
-          // Navegação com dados de ambas as APIs
-          setTimeout(() => {
-            navigate(`/information`, { state: { data, weatherData } });
-          }, 2000);
-        } catch (e) {
-          console.log('Erro ao consultar a WeatherAPI:', e);
+        // Chamada à WeatherAPI para clima atual
+        const weatherResponse = await fetch(
+          `https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${data.city}&lang=pt`,
+        );
+        if (!weatherResponse.ok) {
+          throw new Error('Não foi possível obter a previsão do tempo');
         }
+        const weatherData = await weatherResponse.json();
+
+        // Chamada à WeatherAPI para previsão de 5 dias
+        const forecastResponse = await fetch(
+          `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${data.city}&days=5`,
+        );
+        if (!forecastResponse.ok) {
+          throw new Error(
+            'Não foi possível obter a previsão do tempo dos próximos 5 dias.',
+          );
+        }
+        const forecastData = await forecastResponse.json();
+        console.log(forecastData);
+
+        // Navegação com todos os dados
+        setTimeout(() => {
+          navigate(`/information`, {
+            state: { data, weatherData, forecastData },
+          });
+        }, 1000);
       } catch (e) {
-        console.log('Erro ao buscar dados da BrasilAPI:', e);
+        console.error('Erro:', e);
         navigate('/error');
       }
     }

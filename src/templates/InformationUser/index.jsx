@@ -9,6 +9,7 @@ export const InformationUser = () => {
   // Estados para controlar qual modal será exibido
   const [showInformationModal, setShowInformationModal] = useState(false);
   const [showWeatherModal, setShowWeatherModal] = useState(false);
+  // const forecastData = location.state?.forecastData; // Dados da previsão
 
   const location = useLocation();
   const data = location.state?.data;
