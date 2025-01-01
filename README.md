@@ -20,8 +20,7 @@ O **Planejador de Viagem** é um aplicativo que auxilia no planejamento de viage
 
 ### 2. Resultados (Página de Informações sobre o Destino)
 - **Clima Atual**: Exibe informações sobre as condições climáticas no destino, como temperatura, umidade e uma descrição geral (exemplo: ensolarado, nublado).
-- **Previsão para os Próximos Dias**: Apresenta a previsão do tempo para os próximos dias, incluindo as temperaturas mínimas e máximas, além das condições climáticas esperadas.
-- **Sugestões de Roupas**: Com base na previsão do tempo, o aplicativo sugere roupas e itens que o usuário pode precisar levar para o destino (exemplo: "Dia quente, use roupas leves").
+- **Previsão para os Próximos Dias**: Apresenta a previsão do tempo para os próximos dias, incluindo as condições climáticas esperadas.
 
 ## Tecnologias Utilizadas
 - **Frontend**:
@@ -35,8 +34,14 @@ O **Planejador de Viagem** é um aplicativo que auxilia no planejamento de viage
 ## Como Rodar o Projeto
 1. Clone o repositório:
    ```bash
-   git clone <url-do-repositorio>
-
+   git clone <https://github.com/ryannardelli/trip_planner.git>
+2. Caso você já esteja em um diretório, o comando será com um ponto no final.
+   ```bash
+   git clone <https://github.com/ryannardelli/trip_planner.git> .
+3. Escreva o seguinte comando no terminal.
+    ```bash
+   npm start
+4. Aguarde abrir uma página no navegador e pronto. Basta inserir o CEP do destino que você deseja saber o clima.
 ## Acesso Online
 O projeto está hospedado na Netlify. Você pode acessá-lo através do seguinte link:
 [Planejador de Viagem - Acesse Aqui](https://marvelous-phoenix-5213f9.netlify.app/)
@@ -50,7 +55,6 @@ O projeto está disponível online através do seguinte link:
 - Na página inicial, insira o CEP do destino que deseja planejar.
 - Clique no botão para obter as informações do destino.
 - Veja o clima atual e a previsão dos próximos dias.
-- 
 ### Passo 3: Interaja com o Sistema
 - O aplicativo fornece uma interface simples para validar o CEP e obter as informações.
 - A resposta será exibida após o carregamento dos dados de localização e clima.
