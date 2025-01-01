@@ -14,10 +14,6 @@ export const InformationUser = () => {
   const dataWeather = location.state?.weatherData;
   const forecastData = location.state?.forecastData;
 
-  console.log(dataWeather);
-
-  console.log('Forecast Data', forecastData);
-
   const handleShowInformationModal = () => {
     setShowInformationModal(true);
   };

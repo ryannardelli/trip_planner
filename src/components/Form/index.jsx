@@ -60,7 +60,7 @@ export const Form = () => {
         const weatherData = await weatherResponse.json();
 
         const forecastResponse = await fetch(
-          `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${data.city}&days=5&lang=pt`,
+          `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${data.city}&days=7&lang=pt`,
         );
         if (!forecastResponse.ok) {
           throw new Error(
