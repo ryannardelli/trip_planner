@@ -42,13 +42,12 @@ O **Planejador de Viagem** é um aplicativo que auxilia no planejamento de viage
     ```bash
    npm start
 4. Aguarde abrir uma página no navegador e pronto. Basta inserir o CEP do destino que você deseja saber o clima.
+
 ## Acesso Online
 O projeto está hospedado na Netlify. Você pode acessá-lo através do seguinte link:
 [Planejador de Viagem - Acesse Aqui](https://marvelous-phoenix-5213f9.netlify.app/)
 
 ### Passo 1: Acesse o Link
-O projeto está disponível online através do seguinte link:
-
 [Planejador de Viagem - Acesse Aqui](https://seu-projeto.netlify.app)
 
 ### Passo 2: Explore o Aplicativo
