@@ -1,92 +1,60 @@
-# Getting Started with Create React App
+# Planejador de Viagem
 
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+## Descrição
+O **Planejador de Viagem** é um aplicativo que auxilia no planejamento de viagens, fornecendo informações sobre o local e o clima, garantindo que os usuários possam se preparar adequadamente para o clima de seu destino.
 
-## Available Scripts
+## APIs Utilizadas
+- **BrasilAPI**: Para validar CEPs e buscar informações sobre localidades no Brasil.
+- **WeatherAPI**: Para verificar o clima atual e a previsão do tempo no destino.
 
-In the project directory, you can run:
+## Funcionalidades
+- **Validar o CEP do destino**: O aplicativo permite que o usuário insira um CEP e valide se ele pertence a uma localidade no Brasil.
+- **Exibir informações sobre o destino**: O sistema exibe o nome da cidade, estado e outras informações, juntamente com o clima atual e a previsão para os próximos dias.
 
-### `npm start`
+## Estrutura do Projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Home (Página Inicial)
+- **Formulário de CEP**: O usuário insere o CEP do destino em um campo de entrada.
+- **Botão de Submissão**: Após inserir o CEP, o usuário clica no botão para submeter o CEP e obter informações sobre o destino.
+- **Exibição de Carregando**: Durante a busca das informações, o sistema exibe um indicador de carregamento para informar ao usuário que o processo está em andamento.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Resultados (Página de Informações sobre o Destino)
+- **Clima Atual**: Exibe informações sobre as condições climáticas no destino, como temperatura, umidade e uma descrição geral (exemplo: ensolarado, nublado).
+- **Previsão para os Próximos Dias**: Apresenta a previsão do tempo para os próximos dias, incluindo as temperaturas mínimas e máximas, além das condições climáticas esperadas.
+- **Sugestões de Roupas**: Com base na previsão do tempo, o aplicativo sugere roupas e itens que o usuário pode precisar levar para o destino (exemplo: "Dia quente, use roupas leves").
 
-### `npm test`
+## Tecnologias Utilizadas
+- **Frontend**:
+  - React
+  - Bootstrap
+- **APIs**:
+  - BrasilAPI
+  - WeatherAPI
 
-Launches the test runner in the interactive watch mode.\
-See the section about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
 
-### `npm run build`
+## Como Rodar o Projeto
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositorio>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the
-best performance.
+## Acesso Online
+O projeto está hospedado na Netlify. Você pode acessá-lo através do seguinte link:
+[Planejador de Viagem - Acesse Aqui](https://marvelous-phoenix-5213f9.netlify.app/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Passo 1: Acesse o Link
+O projeto está disponível online através do seguinte link:
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+[Planejador de Viagem - Acesse Aqui](https://seu-projeto.netlify.app)
 
-### `npm run eject`
+### Passo 2: Explore o Aplicativo
+- Na página inicial, insira o CEP do destino que deseja planejar.
+- Clique no botão para obter as informações do destino.
+- Veja o clima atual e a previsão dos próximos dias.
+- 
+### Passo 3: Interaja com o Sistema
+- O aplicativo fornece uma interface simples para validar o CEP e obter as informações.
+- A resposta será exibida após o carregamento dos dados de localização e clima.
+- Caso o CEP não seja encontrado pela API, você será direcionado para uma página de erro e poderá tentar novamente.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Caso queira explorar ou contribuir com o código-fonte, siga as instruções na seção "Como Rodar o Projeto" para rodar o projeto localmente.
 
-If you aren't satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
-
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn't feel obligated to use this
-feature. However we understand that this tool wouldn't be useful if you couldn't
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
