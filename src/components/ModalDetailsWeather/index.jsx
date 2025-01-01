@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import P from 'prop-types';
 export const ModalDetailsWeather = ({
   showModalState,
@@ -63,6 +62,7 @@ export const ModalDetailsWeather = ({
               <strong>Previsão para os próximos dias:</strong>
             </h5>
             {forecast ? (
+              // eslint-disable-next-line react/prop-types
               forecast.forecast.forecastday.map((day, index) => (
                 <div key={index}>
                   <p>
@@ -108,8 +108,10 @@ ModalDetailsWeather.propTypes = {
   dataWeather: P.shape({
     current: P.shape({
       temp_c: P.number.isRequired,
+      text: P.string.isRequired,
       condition: P.shape({
         text: P.string.isRequired,
+        icon: P.string.isRequired,
       }).isRequired,
       humidity: P.number.isRequired,
       wind_kph: P.number.isRequired,
