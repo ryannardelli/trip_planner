@@ -48,7 +48,7 @@ O projeto está hospedado na Netlify. Você pode acessá-lo através do seguinte
 [Planejador de Viagem - Acesse Aqui](https://marvelous-phoenix-5213f9.netlify.app/)
 
 ### Passo 1: Acesse o Link
-[Planejador de Viagem - Acesse Aqui](https://seu-projeto.netlify.app)
+[Planejador de Viagem - Acesse Aqui](https://marvelous-phoenix-5213f9.netlify.app/)
 
 ### Passo 2: Explore o Aplicativo
 - Na página inicial, insira o CEP do destino que deseja planejar.
