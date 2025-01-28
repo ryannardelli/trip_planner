@@ -1,7 +1,7 @@
 # Planejador de Viagem
 
 ## Descrição
-O **Planejador de Viagem** é um aplicativo que auxilia no planejamento de viagens, fornecendo informações sobre o local e o clima, garantindo que os usuários possam se preparar adequadamente para o clima de seu destino.
+O **Planejador de Viagem** é um aplicação web que auxilia no planejamento de viagens, fornecendo informações sobre o local e o clima, garantindo que os usuários possam se preparar adequadamente para o clima de seu destino.
 
 ## APIs Utilizadas
 - **BrasilAPI**: Para validar CEPs e buscar informações sobre localidades no Brasil.
